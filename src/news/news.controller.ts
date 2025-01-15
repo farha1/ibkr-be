@@ -6,7 +6,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { NewsService } from './news.service';
-import { findNewsOptions } from './interfaces/news.interface';
+import { findNewsOptions, NewsOrder } from './interfaces/news.interface';
 
 @Controller('news')
 export class NewsController {
@@ -16,7 +16,7 @@ export class NewsController {
   async findAll(
     @Query('section') section: string,
     @Query('page-size') pageSize: string = '10',
-    @Query('page-offset') pageOffset: string = '0',
+    @Query('page') page: string = '1',
   ) {
     try {
       const queryParams: findNewsOptions = {
@@ -25,7 +25,10 @@ export class NewsController {
           isPublished: true,
         },
         take: parseInt(pageSize),
-        skip: parseInt(pageOffset),
+        skip: (parseInt(page) - 1) * parseInt(pageSize),
+        order: {
+          publishDate: NewsOrder.DESC,
+        },
       };
       const news = await this.newsService.findAll(queryParams);
       return news;
