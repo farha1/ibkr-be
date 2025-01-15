@@ -21,7 +21,7 @@ export class NewsController {
     try {
       const queryParams: findNewsOptions = {
         where: {
-          section: section || 'world',
+          section: section,
           isPublished: true,
         },
         take: parseInt(pageSize),
