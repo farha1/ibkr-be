@@ -45,4 +45,28 @@ export class NewsController {
       );
     }
   }
+
+  @Get('meta')
+  async getMeta(@Query('section') section: string) {
+    try {
+      const meta = await this.newsService.getMeta({
+        where: {
+          section: section,
+          isPublished: true,
+        },
+      });
+      return meta;
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          error: 'error fetch data',
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: error,
+        },
+      );
+    }
+  }
 }

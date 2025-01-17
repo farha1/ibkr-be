@@ -35,6 +35,17 @@ export class NewsService {
     }
   }
 
+  async getMeta(options: findNewsOptions = {}): Promise<{ totalPage: number }> {
+    try {
+      const news = await this.newsRepository.find(options);
+      return {
+        totalPage: Math.ceil(news.length / 10),
+      };
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
   async create(news: CreateNewsDto): Promise<void> {
     try {
       await this.newsRepository.save(news);
