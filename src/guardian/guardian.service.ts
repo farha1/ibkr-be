@@ -36,7 +36,7 @@ export class GuardianService {
     return date.toISOString().slice(0, 10);
   }
 
-  @Cron(CronExpression.EVERY_6_HOURS)
+  @Cron(CronExpression.EVERY_HOUR)
   async fetchDataSchedule() {
     const sections = [
       'world',
@@ -54,7 +54,7 @@ export class GuardianService {
         section,
         'from-date': this.formatDate(yesterday),
         'to-date': this.formatDate(today),
-        'page-size': '50',
+        'page-size': '20',
       });
       await this.sleep(10 * 1000);
     }

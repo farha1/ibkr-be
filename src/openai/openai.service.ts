@@ -28,6 +28,7 @@ export class OpenaiService {
           },
         ],
         response_format: zodResponseFormat(Output, 'keyPoints'),
+        max_completion_tokens: 1024,
       });
       return completion.choices[0].message.content;
     } catch (error) {
