@@ -47,13 +47,13 @@ jobs:
 
           # Run the new container
           docker run -d \
-            -e DATABASE_HOST=${{ secrets.DATABASE_HOST }} \
-            -e DATABASE_PORT=${{ secrets.DATABASE_PORT }} \
-            -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
-            -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
-            -e DATABASE_NAME=${{ secrets.DATABASE_NAME }} \
-            -e GUARDIAN_API_KEY=${{ secrets.GUARDIAN_API_KEY }} \
-            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e DATABASE_HOST='${{ secrets.DATABASE_HOST }}' \
+            -e DATABASE_PORT='${{ secrets.DATABASE_PORT }}' \
+            -e DATABASE_USERNAME='${{ secrets.DATABASE_USERNAME }}' \
+            -e DATABASE_PASSWORD='${{ secrets.DATABASE_PASSWORD }}' \
+            -e DATABASE_NAME='${{ secrets.DATABASE_NAME }}' \
+            -e GUARDIAN_API_KEY='${{ secrets.GUARDIAN_API_KEY }}' \
+            -e OPENAI_API_KEY='${{ secrets.OPENAI_API_KEY }}' \
             --name ibkr-be \
             -p 3000:3000 \
             farha1/ibkr-be:latest
