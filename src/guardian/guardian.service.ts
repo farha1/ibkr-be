@@ -110,7 +110,7 @@ export class GuardianService {
             AxiosResponse<GuardianApiByIdResponse>
           >(
             this.http.get(
-              `${e.apiUrl}?api-key=e94ddcf0-ba18-4716-96d8-ae586d66122b&show-fields=body`,
+              `${e.apiUrl}?api-key=${process.env.GUARDIAN_API_KEY}&show-fields=body`,
             ),
           );
           const news = response.data.response.content;
