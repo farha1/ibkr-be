@@ -36,7 +36,7 @@ export class GuardianService {
     return date.toISOString().slice(0, 10);
   }
 
-  @Cron(CronExpression.EVERY_HOUR)
+  @Cron(CronExpression.EVERY_2_HOURS)
   async fetchDataSchedule() {
     const sections = [
       'world',
