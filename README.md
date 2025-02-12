@@ -9,6 +9,14 @@ This project is motivated by my own problem. I find it difficult to read long ne
 
 Visit our website: [IBKR](https://ib-kr.com)
 
+## Stack Overview
+
+- NestJS
+- Postgresql
+- OpenAI
+- Docker
+- Github Action (CI/CD)
+
 ## Project setup
 
 ```bash
