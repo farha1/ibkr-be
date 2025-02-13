@@ -17,6 +17,9 @@ export class News {
   @Column()
   title: string;
 
+  @Column()
+  slug: string;
+
   @Column({ select: false, nullable: true })
   content: string | null;
 

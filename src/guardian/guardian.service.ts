@@ -70,8 +70,13 @@ export class GuardianService {
       );
       const data = response.data.response.results;
       for (const news of data) {
+        const slug = news.webTitle
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/[^\w-]+/g, '');
         try {
           const createNewsDto: CreateNewsDto = {
+            slug,
             title: news.webTitle,
             sourceUrl: news.webUrl,
             apiUrl: news.apiUrl,
